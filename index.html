@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <script href="index.js"></script>
+    <div class="geo">
+      <h1>GEO LOCATION</h1>
+      <div class="subgeo">
+        <input id="name" placeholder="enter your name" autocomplete="username" required>
+        <button id="btn">submit</button>
+      </div>
+      <div class="subgeo">
+        <p> Your longitude is </p>
+        <div id="latitude">
+          lat
+        </div>
+      </div>
+      <div class="subgeo">
+        <p> Your longitude is </p>
+        <div id="longitude">
+          lon
+        </div>
+      </div>
+    </div>
+    <script>
+      const nameinput = document.getElementById('name')
+      const btn = document.getElementById('btn')
+
+
+        async function getlocation() {
+            btn.addEventListener('click', () =>{
+              const username = nameinput.value 
+
+              if(username){
+                if ("geolocation" in navigator) {
+                console.log("geolocation available");
+                
+              navigator.geolocation.getCurrentPosition(async (position) => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                document.getElementById("latitude").textContent = lat;
+                document.getElementById("longitude").textContent = lon;
+                console.log("postion is available");
+
+                const data = {lat, lon, username};
+                const options = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body:JSON.stringify(data),
+                };
+                const response = await fetch("/api", options);
+                const json = await response.json();
+                console.log(json);
+                
+              });
+            } else {
+              console.log("position not available");
+            }
+              }
+              else{
+                alert("please enter name ")
+              }
+             
+            } )
+        }
+          getlocation();
+           </script>
+
+  </body>
+</html>

@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:'Arial', 'sans-serif';
+    
+}
+.geo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    width: 500px;
+    padding: 40px;
+    border: 2px solid #f2ddca;
+    border-radius: 30px;
+    background-color: #88ceda;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.subgeo{
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../geolocation-feature.png);
+    background-size: cover;
+    background-position: center;
+   
+}
+
+button {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: capitalize;
+    width: 100px;
+    height: 40px;
+    background-color: maroon;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: darkred;
+  }
+  
+input{
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
